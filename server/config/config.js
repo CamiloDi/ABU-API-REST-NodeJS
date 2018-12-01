@@ -19,4 +19,4 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
     urlDB = process.env.MONGO_URI;
 }
-process.env.URLDB ="mongodb://beacon:beacon1234@ds121624.mlab.com:21624/beacon_test"; //urlDB;
+process.env.URLDB = urlDB;
