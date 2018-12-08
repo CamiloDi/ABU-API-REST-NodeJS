@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
 let Schema = mongoose.Schema;
 
 let beaconSchema = new Schema({
@@ -16,6 +15,4 @@ let beaconSchema = new Schema({
         required: [true, 'La fecha es necesaria']
     }
 });
-
-beaconSchema.plugin(uniqueValidator, { message: '{PATH} debe ser único.' })
 module.exports = mongoose.model('Beacon', beaconSchema);
