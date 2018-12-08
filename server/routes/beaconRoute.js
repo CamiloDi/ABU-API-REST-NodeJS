@@ -27,7 +27,8 @@ app.post('/beacon', function(req, res) {
     let beacon = new Beacon({
         nombre: body.nombre,
         id: body.id,
-        fecha: body.fecha
+        fecha: body.fecha,
+        usuario:body.usuario
     });
     beacon.save((err, beaconBD) => {
         if (err) {
@@ -60,7 +61,8 @@ app.post('/beacons', function(req, res) {
         let beacon = new Beacon({
             nombre: beaconsJson[i].nombre,
             id: beaconsJson[i].id,
-            fecha: beaconsJson[i].fecha
+            fecha: beaconsJson[i].fecha,
+            usuario:beaconsJson[i].usuario
         });
         beacon.save((err, beaconBD) => {
             if (err) {

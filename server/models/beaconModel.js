@@ -13,6 +13,10 @@ let beaconSchema = new Schema({
     fecha: {
         type: Date,
         required: [true, 'La fecha es necesaria']
+    },
+    usuario: {
+        type: String,
+        required: [true, 'El Usuario es necesario']
     }
 });
 module.exports = mongoose.model('Beacon', beaconSchema);
