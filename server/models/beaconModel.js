@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const timeZone = require('mongoose-timezone');
+const moment = require('moment');
+const tz = require('moment-timezone');
 let Schema = mongoose.Schema;
 
 let beaconSchema = new Schema({
@@ -11,8 +14,10 @@ let beaconSchema = new Schema({
         required: [true, 'El ID es necesario']
     },
     fecha: {
-        type: Date,
-        required: [true, 'La fecha es necesaria']
+        type: Date ,
+        required: [true, 'La fecha es necesaria'],
+        default:moment.tz(process.env.TZ).format("YYYY-MM-DDTHH:MM:ss")
+        
     },
     usuario: {
         type: String,

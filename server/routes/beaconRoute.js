@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const Beacon = require('../models/beaconModel');
+const moment = require('moment');
+const tz = require('moment-timezone');
 
 app.get('/beacon', function(req, res) {
 
@@ -24,11 +26,13 @@ app.get('/beacon', function(req, res) {
 app.post('/beacon', function(req, res) {
 
     let body = req.body;
+    let fecha = moment(body.fecha).format('YYYY-MM-DDTHH:mm:ss.SSS')+'Z';
+
     let beacon = new Beacon({
         nombre: body.nombre,
         id: body.id,
-        fecha: body.fecha,
-        usuario:body.usuario
+        fecha: new Date(fecha),
+        usuario: body.usuario
     });
     beacon.save((err, beaconBD) => {
         if (err) {
@@ -57,11 +61,11 @@ app.post('/beacons', function(req, res) {
 
 
     for (let i = 0; i < cantidad; i++) {
-
+        let fecha = moment(beaconsJson[i].fecha).format('YYYY-MM-DDTHH:mm:ss.SSS')+'Z';
         let beacon = new Beacon({
             nombre: beaconsJson[i].nombre,
             id: beaconsJson[i].id,
-            fecha: beaconsJson[i].fecha,
+            fecha: new Date(fecha),
             usuario:beaconsJson[i].usuario
         });
         beacon.save((err, beaconBD) => {
@@ -86,7 +90,5 @@ app.post('/beacons', function(req, res) {
     }
 
 });
-
-
 
 module.exports = app;
