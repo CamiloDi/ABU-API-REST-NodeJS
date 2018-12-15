@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json())
 app.use(require('./routes/beaconRoute'));
+app.use(require('./routes/alertaRoute'));
 
 mongoose.connect(process.env.URLDB, (err, res) => {
     if (err) throw err;
