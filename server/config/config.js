@@ -29,7 +29,7 @@ process.env.TZ = process.env.TZ || 'America/Santiago';
 //==================
 //Datos SQL Server
 //==================
-process.env.PASSSQL = process.env.PASSSQL || 'Proyecto.ABU.2018-Mindsoft';
-process.env.USERSQL = process.env.USERSQL || 'abu';
-process.env.IPSQL = process.env.IPSQL || '200.6.117.164';
-process.env.DBSQL = process.env.DBSQL || 'ABU';
+process.env.PASSSQL = process.env.PASSSQL || '';
+process.env.USERSQL = process.env.USERSQL || '';
+process.env.IPSQL = process.env.IPSQL || '';
+process.env.DBSQL = process.env.DBSQL || '';
