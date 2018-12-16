@@ -3,10 +3,15 @@ const app = express();
 const Alerta = require('../models/alertaModel');
 const moment = require('moment');
 const mssql = require('../config/mssql');
+//==================
+//Permisos
+//==================
+const header=["Access-Control-Allow-Origin", "*"];
+
 
 
 app.get('/alertas/:id_paciente',function(req,res){
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header(header[0],header[1]);
     let body = req.body;
     let id = req.params.id_paciente;
     mssql.getSPAlertas(id,function(err,alertas){
@@ -27,7 +32,7 @@ app.get('/alertas/:id_paciente',function(req,res){
 });
 
 app.post('/alerta', function(req, res) {
-
+    res.header(header[0],header[1]);
     let body = req.body;
     let fecha = moment(body.fecha).format('YYYY-MM-DDTHH:mm:ss.SSS')+'Z';
 
@@ -56,7 +61,7 @@ app.post('/alerta', function(req, res) {
 });
 
 app.put('/alerta', function(req, res) {
-
+    res.header(header[0],header[1]);
     let body = req.body;
     let id = body.id;
 

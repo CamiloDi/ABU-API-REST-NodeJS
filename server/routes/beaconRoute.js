@@ -3,10 +3,14 @@ const app = express();
 const Beacon = require('../models/beaconModel');
 const moment = require('moment');
 const mssql = require('../config/mssql');
-
+//==================
+//Permisos
+//==================
+const header=["Access-Control-Allow-Origin", "*"];
 
 
 app.get('/beacons/id_beacon',function(req,res){
+    res.header(header[0],header[1]);
         let body = req.body;
         let id = req.params.id_beacon;
         mssql.getSPBeacon(id,function(err,beacons){
@@ -26,7 +30,7 @@ app.get('/beacons/id_beacon',function(req,res){
 
 });
 app.post('/beacon', function(req, res) {
-
+    res.header(header[0],header[1]);
     let body = req.body;
     let fecha = moment(body.fecha).format('YYYY-MM-DDTHH:mm:ss.SSS')+'Z';
 
@@ -52,6 +56,7 @@ app.post('/beacon', function(req, res) {
     });
 });
 app.post('/beacons', function(req, res) {
+    res.header(header[0],header[1]);
     let body = req.body;
     let beaconsJson = body.beacons;
     let cantidad = parseInt(body.cantidad);

@@ -13,10 +13,6 @@ app.use(bodyParser.urlencoded({
 }))
 
 // parse application/json
-/*app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
-  });*/
 app.use(bodyParser.json())
 app.use(require('./routes/beaconRoute'));
 app.use(require('./routes/alertaRoute'));
