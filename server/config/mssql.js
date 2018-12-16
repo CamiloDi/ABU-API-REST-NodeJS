@@ -94,6 +94,7 @@ getSPBeacon = (id,callback)=>{
 getSPAlertas = (id,callback)=>{
     let sp = "api_Alerta_Get";
     let param = "id_Paciente";
+    sql.close();
     sql.connect(sqlConfig, function() {
         var request = new sql.Request();
         request.input(param, id);
@@ -148,6 +149,7 @@ postSPAlerta = (alerta,callback)=>{
    putSPAlerta = (id,callback)=>{
     let sp = "api_Alerta_Update";
     let param = "id_Alerta";
+    sql.close();
     sql.connect(sqlConfig, function() {
         var request = new sql.Request();
         request.input(param, id);
