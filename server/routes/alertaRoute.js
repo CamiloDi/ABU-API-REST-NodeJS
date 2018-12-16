@@ -6,6 +6,7 @@ const mssql = require('../config/mssql');
 
 
 app.get('/alertas/:id_paciente',function(req,res){
+
     let body = req.body;
     let id = req.params.id_paciente;
     mssql.getSPAlertas(id,function(err,alertas){
