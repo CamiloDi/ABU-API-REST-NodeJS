@@ -6,9 +6,9 @@ const mssql = require('../config/mssql');
 
 
 
-app.get('/beacons',function(req,res){
+app.get('/beacons/id_beacon',function(req,res){
         let body = req.body;
-        let id = body.id;
+        let id = req.params.id_beacon;
         mssql.getSPBeacon(id,function(err,beacons){
             if(err){
                 res.status(400).json({

@@ -5,9 +5,9 @@ const moment = require('moment');
 const mssql = require('../config/mssql');
 
 
-app.get('/alertas',function(req,res){
+app.get('/alertas/:id_paciente',function(req,res){
     let body = req.body;
-    let id = body.id;
+    let id = req.params.id_paciente;
     mssql.getSPAlertas(id,function(err,alertas){
         if(err){
             res.status(400).json({
