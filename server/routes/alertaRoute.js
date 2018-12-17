@@ -60,10 +60,10 @@ app.post('/alerta', function(req, res) {
     });
 });
 
-app.put('/alerta', function(req, res) {
+app.post('/alerta/:id_alerta', function(req, res) {
     res.header(header[0],header[1]);
     let body = req.body;
-    let id = body.id;
+    let id = req.params.id_alerta;
 
     mssql.putSPAlerta(id,(err,resp)=>{
         if(err){
